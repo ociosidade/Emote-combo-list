@@ -34,9 +34,78 @@ h1 {
   margin: 0;
 }
 
+h1 a:link,
+h1 a:visited {
+  text-decoration: none;
+  color: #f3b700; /* Keeps the title color consistent */
+}
+
+.emote-url {
+  color: #cccccc;
+}
+
+.emote-url a:link,
+.emote-url a:visited {
+  color: #cccccc;
+}
+
+/* --- TABS NAVIGATION --- */
+.tab-container {
+  width: 90%;
+  max-width: 1000px; /* Matches table width */
+  display: flex;
+  flex-wrap: wrap; /* Allows tabs to wrap to the next line if crowded */
+  gap: 10px;       /* Space between tabs */
+}
+
+.tab-button {
+  flex: 1;             /* Grow to fill space equally */
+  min-width: 120px;    /* Prevents tabs from becoming too skinny before wrapping */
+  text-align: center;  /* Centers text inside the expanding tab */
+  
+  background-color: rgba(26, 19, 36, 0.5);
+  color: #cccccc;
+  border: 2px solid #4a3561;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 20px;
+  font-family: "Teko", sans-serif;
+  font-size: 1.8em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.tab-button:hover {
+  background-color: #4a3561;
+  color: #fff;
+}
+
+.tab-button.active {
+  background-color: #f3b700;
+  color: #2b1d3b;
+  border-color: #f3b700;
+  font-weight: 700;
+  box-shadow: 0 -2px 10px rgba(243, 183, 0, 0.3);
+}
+
+/* Wrapper for tab contents */
+.tab-content {
+  width: 100%;
+  max-width: 1000px; 
+  display: flex;     
+  justify-content: center;
+  animation: fadeEffect 0.5s; /* Smooth fade in */
+}
+
+/* Animation for switching tabs */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 /* --- Combo Table --- */
 .combo-table {
-  width: 90%;
+  width: 100%;
   max-width: 1000px;
   border-collapse: separate;
   border-spacing: 0 10px; /* This creates the space between rows */
@@ -81,6 +150,15 @@ h1 {
   color: #cccccc;
 }
 
+.combo-table .source-name a {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+.combo-table .source-name a:hover {
+  color: #f3b700;
+}
+
 /* Status Column Styling */
 .combo-table .status {
   font-size: 1.8em;
@@ -103,15 +181,6 @@ h1 {
   font-style: italic;
 }
 
-a:link {
- color: #cccccc;
-}
-
-h1 a:link {
-    text-decoration: none;
-    color: purple;
-}
-
 /* --- Responsive Styles for Mobile --- */
 @media screen and (max-width: 768px) {
   body {
@@ -126,6 +195,8 @@ h1 a:link {
   h1 {
     font-size: 2.5em;
   }
+
+  /* Note: Tab wrapping logic is handled by the main CSS block now */
 
   .combo-table {
     width: 100%;
